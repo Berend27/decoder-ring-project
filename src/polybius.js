@@ -7,7 +7,65 @@ const polybiusModule = (function () {
   // you can add any code you want within this function scope
 
   function polybius(input, encode = true) {
-    // your solution code here
+    if (encode) {
+      const chars = Array.from(input.toLowerCase())
+      const encoded = chars.map(char => {
+        let code = ""
+        if (char === ' ') return char
+        switch (char) {
+          case 'a':
+          case 'f':
+          case 'l':
+          case 'q':
+          case 'v':
+            code += "1"
+            break
+          case 'b':
+          case 'g':
+          case 'm':
+          case 'r':
+          case 'w':
+            code += "2"
+            break
+          case 'c':
+          case 'h':
+          case 'n':
+          case 's':
+          case 'x':
+            code += "3"
+            break
+          case 'd':
+          case 'i':
+          case 'j':
+          case 'o':
+          case 't':
+          case 'y':
+            code += "4"
+            break 
+          case 'e':
+          case 'k':
+          case 'p':
+          case 'u':
+          case 'z':
+            code += "5"
+            break
+          default:
+            break
+        }
+
+        char = char.charCodeAt(0)
+        if (char < 97 || char > 122) return String.fromCharCode(char)
+        if (char <= 101) code += "1"
+        else if (char <= 107) code += "2"
+        else if (char <= 112) code += "3"
+        else if (char <= 117) code += "4"
+        else if (char <= 122) code += "5"
+        return code
+      })
+      return encoded.join('')
+    } else {
+      // TODO
+    }
   }
 
   return {
