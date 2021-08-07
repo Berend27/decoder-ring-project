@@ -5,11 +5,17 @@
 
 const caesarModule = (function () {
   function caesar(input, shift, encode = true) {
+    if (!shift || shift < -25 || shift > 25) return false
+    input = input.toLowerCase()
     const chars = [...input]
     const shifted = chars.map(char => {
       char = char.charCodeAt(0)
-      if (encode) char += shift
-      else  char -= shift
+      if (char >= 97 && char <= 122) {
+        if (encode) char += shift
+        else  char -= shift
+        if (char > 122) char -= 26
+        if (char < 97) char += 26
+      }
       return String.fromCharCode(char)
     })
     return shifted.join("")
