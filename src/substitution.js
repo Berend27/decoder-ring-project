@@ -6,6 +6,7 @@
 const substitutionModule = (function () {
   function substitution(input, alphabet, encode = true) {
     const firstAlphabet = "abcdefghijklmnopqrstuvwxyz"
+    if (!alphabet || typeof alphabet != "string") return false
     if (alphabet.length !== 26) return false
     if (!checkAlphabet(alphabet)) return false
 

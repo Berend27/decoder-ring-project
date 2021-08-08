@@ -49,4 +49,9 @@ describe("substitution", () => {
         const expected = "you are an excellent spy"
         expect(actual).to.equal(expected)
     })
+    it("should return false if the substitution alphabet is missing", () => {
+        const message = "Thinkful"
+        const actual = substitution(message)
+        expect(actual).to.false
+    })
 })
