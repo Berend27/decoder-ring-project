@@ -4,8 +4,6 @@
 // of the anonymous function on line 6
 
 const substitutionModule = (function () {
-  // you can add any code you want within this function scope
-
   function substitution(input, alphabet, encode = true) {
     const firstAlphabet = "abcdefghijklmnopqrstuvwxyz"
     if (alphabet.length !== 26) return false
