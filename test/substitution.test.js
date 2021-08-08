@@ -42,4 +42,11 @@ describe("substitution", () => {
         const expected = "message"
         expect(actual).to.equal(expected)
     })
+    it("maintains spaces in the message before and after decoding", () => {
+        const message = "elp xhm xf mbymwwmfj dne"
+        const alphabet = "xoyqmcgrukswaflnthdjpzibev"
+        const actual = substitution(message, alphabet, false)
+        const expected = "you are an excellent spy"
+        expect(actual).to.equal(expected)
+    })
 })

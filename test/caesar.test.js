@@ -7,6 +7,16 @@ describe("caesar", () => {
        const expected = 'wklqnixo'
        expect(actual).to.equal(expected)
     })
+    it("ignores capital letters, treating them as lowercase", () => {
+        const actual = caesar("Thinkful", 3, true)
+        const expected = 'wklqnixo'
+        expect(actual).to.equal(expected)
+     })
+    it("handles shifts that go past the end of the alphabet when encoding", () => {
+        const actual = caesar("z", 3)
+        const expected = "c"
+        expect(actual).to.equal(expected)
+    })
     it("should encode a message by shifting the letters a specified amount, despite leaving out the third argument", () => {
         const actual = caesar("thinkful", 3)
         const expected = 'wklqnixo'

@@ -2,6 +2,12 @@ const expect = require("chai").expect
 const { polybius } = require("../src/polybius")
 
 describe("polybius", () => {
+    it("translates the letters i and j to 42 when encoding", () => {
+        const message = "i j"
+        const actual = polybius(message)
+        const expected = "42 42"
+        expect(actual).to.equal(expected)
+    })
     it("should encode a word using a polybius square", () => {
         const message = "thinkful"
         const actual = polybius(message)
@@ -26,7 +32,7 @@ describe("polybius", () => {
         const expected = "th(i/j)nkful"
         expect(actual).to.equal(expected)
     })
-    it("shoud decode a message that has a space using a polybius square", () => {
+    it("maintains spaces in the message when decoding", () => {
         const message = "3251131343 2543241341"
         const actual = polybius(message, false)
         const expected = "hello world"
