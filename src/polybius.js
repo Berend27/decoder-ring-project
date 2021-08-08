@@ -64,8 +64,30 @@ const polybiusModule = (function () {
       })
       return encoded.join('')
     } else {
-      // TODO
+     if (!input.length) return ""
+     const words = input.split(' ')
+     for (let word of words) {
+      if (word.length % 2 === 1) return false
+     }
+     return words.map(word => decode(word)).join(' ')
     }
+
+    function decode(series) {
+      const letters = [
+        ['a', 'b', 'c', 'd', 'e'], 
+        ['f', 'g', 'h', '(i/j)', 'k'], 
+        ['l', 'm', 'n', 'o', 'p'], 
+        ['q', 'r', 's', 't', 'u'],
+        ['v', 'w', 'x', 'y', 'z']
+      ]
+
+      let word = ""
+      for (let i = 1; i < series.length; i += 2) {
+        word += letters[series[i] - 1][series[i - 1] - 1]
+      }
+      return word
+    }
+
   }
 
   return {
