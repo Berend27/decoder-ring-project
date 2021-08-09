@@ -14,7 +14,7 @@ const substitutionModule = (function () {
     const words = input.split(' ')
     if (encode) {
       return words.map(word => encodeThis(word, alphabet)).join(' ')
-    } else {
+    } else { // decode
       return words.map(word => decodeThis(word, alphabet)).join(' ')
     }
 
@@ -35,6 +35,7 @@ const substitutionModule = (function () {
           const index = firstAlphabet.indexOf(letter)
           encoded += alphabet.charAt(index)
         } else {
+          // keep special characters the same
           encoded += letter
         }
         return encoded
@@ -44,6 +45,7 @@ const substitutionModule = (function () {
     function decodeThis(word, alphabet) {
       const letters = Array.from(word)
       return letters.reduce((decoded, letter) => {
+        // special characters are translated if they are in the given alphabet
         if (alphabet.includes(letter)) {
           const index = alphabet.indexOf(letter)
           decoded += firstAlphabet.charAt(index)

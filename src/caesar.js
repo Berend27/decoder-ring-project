@@ -4,6 +4,7 @@
 // of the anonymous function on line 6
 
 const caesarModule = (function () {
+  // shifts or unshifts the letters in the given phrase by the specified amount
   function caesar(input, shift, encode = true) {
     if (!shift || shift < -25 || shift > 25) return false
     input = input.toLowerCase()
@@ -13,6 +14,7 @@ const caesarModule = (function () {
       if (char >= 97 && char <= 122) {
         if (encode) char += shift
         else  char -= shift
+        // wrap if the shift exceeds either end of the alphabet
         if (char > 122) char -= 26
         if (char < 97) char += 26
       }

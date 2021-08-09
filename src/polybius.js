@@ -11,6 +11,7 @@ const polybiusModule = (function () {
       const encoded = chars.map(char => {
         let code = ""
         if (char === ' ') return char
+        // getting the left number, the column number
         switch (char) {
           case 'a':
           case 'f':
@@ -52,6 +53,7 @@ const polybiusModule = (function () {
             break
         }
 
+        // getting the right number, the row number from the polybius square
         char = char.charCodeAt(0)
         if (char < 97 || char > 122) return String.fromCharCode(char)
         if (char <= 101) code += "1"
@@ -82,7 +84,8 @@ const polybiusModule = (function () {
 
       let word = ""
       for (let i = 1; i < series.length; i += 2) {
-        word += letters[series[i] - 1][series[i - 1] - 1]
+        word += letters[series[i] - 1][series[i - 1] - 1] 
+        // 1 was subtracted to make row and column numbers match index numbers
       }
       return word
     }
